@@ -1,5 +1,10 @@
 # geojson-split
 - 국토교통부에서 제공하는 국토통계 공시지가 리경계 좌표 목록을 리 단위 json으로 분리하는 패키지입니다.
+- geojson 추출 방법.
+  - https://map.ngii.go.kr/ms/map/NlipMap.do?tabGb=statsMap 방문.
+  - 국토통계지도 > 토지 탭 선택.
+  - 공시지가 / 시도 전체 / 시군구 전체 / 항목(법정경계) 선택. (필요에 맞게 선택)
+  - 다운로드된 SHP 파일을 QGIS를 이용해 geojson으로 변환.
 
 ## ENV
 - node v20.11.1
