@@ -12,6 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
+const { lcj } = require('legal-code-jsonizer');
 
 function splitGeoJson(filePath, exportDir) {
   if (!filePath) {
@@ -37,10 +38,12 @@ function splitGeoJson(filePath, exportDir) {
   });
 
   // 라인별로 파일 생성.
+  const legalCodeList = lcj().filter(e => e.isAlive);
   rl.on('line', (line) => {
     try {
       const parsed = JSON.parse(line);
-      fs.writeFile(path.join(groupDir, `${parsed.properties.gid}.json`), JSON.stringify(parsed, null, 0), (err) => {
+      parsed.properties.gidInfo = legalCodeList.filter(e => e.fullCode === parsed.properties.gid)[0];
+      fs.writeFile(path.join(groupDir, `${parsed.properties.gid}.json`), JSON.stringify(parsed, null, 2), (err) => {
         if (err) console.log(err);
       });
 
