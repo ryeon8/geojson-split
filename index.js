@@ -40,7 +40,7 @@ function splitGeoJson(filePath, exportDir) {
   rl.on('line', (line) => {
     try {
       const parsed = JSON.parse(line);
-      fs.writeFile(path.join(groupDir, `${parsed.properties.gid}.json`), JSON.stringify(parsed, null, 2), (err) => {
+      fs.writeFile(path.join(groupDir, `${parsed.properties.gid}.json`), JSON.stringify(parsed, null, 0), (err) => {
         if (err) console.log(err);
       });
 
