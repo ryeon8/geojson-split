@@ -45,7 +45,7 @@ function splitGeoJson(filePath, exportDir) {
       const parsed = JSON.parse(line);
       parsed.properties.gid = lodash.padEnd(parsed.properties.gid, 10, '0');
       parsed.properties.gidInfo = legalCodeList.filter(e => e.fullCode === parsed.properties.gid)[0];
-      fs.writeFile(path.join(groupDir, `${parsed.properties.gid}.json`), JSON.stringify(parsed, null, 2), (err) => {
+      fs.writeFile(path.join(groupDir, `${parsed.properties.gid}.json`), JSON.stringify(parsed, null, 0), (err) => {
         if (err) console.log(err);
       });
 
