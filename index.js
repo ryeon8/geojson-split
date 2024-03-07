@@ -56,7 +56,7 @@ function splitGeoJson(filePath, exportDir) {
 
   // 파일 읽기 완료 시 처리
   rl.on('close', () => {
-    console.log('File reading completed.');
+    console.log('File reading completed. JSON file writing may not have been done yet. Please check your export directory.');
   });
 }
 
