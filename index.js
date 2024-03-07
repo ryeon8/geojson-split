@@ -2,7 +2,7 @@
 
 /**
  * 국토교통부에서 공개한 (B100)국토통계_공시지가-공시지가-리경계_전국_202207 SHP > geojson 파일을 gid 별로 json으로 분리하는 패키지.
- * 해당 파일을 assets/geo.json으로 배치 후 node index.js로 이용 가능.
+ * npx gjs {파일 경로} {추출 경로}로 이용 가능.
  * 
  * @author r3n
  * @since 2024. 03. 04.
@@ -12,6 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
+const lodash = require('lodash');
 const { lcj } = require('legal-code-jsonizer');
 
 function splitGeoJson(filePath, exportDir) {
@@ -42,6 +43,7 @@ function splitGeoJson(filePath, exportDir) {
   rl.on('line', (line) => {
     try {
       const parsed = JSON.parse(line);
+      parsed.properties.gid = lodash.padEnd(parsed.properties.gid, 10, '0');
       parsed.properties.gidInfo = legalCodeList.filter(e => e.fullCode === parsed.properties.gid)[0];
       fs.writeFile(path.join(groupDir, `${parsed.properties.gid}.json`), JSON.stringify(parsed, null, 2), (err) => {
         if (err) console.log(err);
