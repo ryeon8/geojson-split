@@ -1,5 +1,6 @@
 # geojson-split
-- 국토교통부에서 제공하는 국토통계 공시지가 리경계 좌표 목록을 리 단위 json으로 분리하는 패키지입니다.
+## SUMMARY
+- 국토교통부에서 제공하는 국토통계 공시지가 좌표 목록을 gid(법정동 코드).json으로 분리하는 패키지입니다.
 - geojson 추출 방법.
   - https://map.ngii.go.kr/ms/map/NlipMap.do?tabGb=statsMap 방문.
   - 국토통계지도 > 토지 탭 선택.
